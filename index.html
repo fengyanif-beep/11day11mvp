@@ -1,378 +1,370 @@
-{\rtf1\ansi\ansicpg936\cocoartf2709
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11 Days, 11 MVPs Challenge</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- 引入 Google Fonts 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* 使用 Inter 字体作为网站主字体 */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f1f5f9; /* 使用一个柔和的灰色背景 */
+        }
+        /* 定义一个酷炫的渐变背景 */
+        .hero-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+    </style>
+</head>
+<body class="text-slate-800">
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="zh-CN" class="scroll-smooth">\
-<head>\
-    <meta charset="UTF-8">\
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-    <title>11 Days, 11 MVPs Challenge</title>\
-    <!-- \uc0\u24341 \u20837  Tailwind CSS -->\
-    <script src="https://cdn.tailwindcss.com"></script>\
-    <!-- \uc0\u24341 \u20837  Stripe.js -->\
-    <script src="https://js.stripe.com/v3/"></script>\
-    <!-- \uc0\u24341 \u20837  Google Fonts \u23383 \u20307  -->\
-    <link rel="preconnect" href="https://fonts.googleapis.com">\
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">\
-    <style>\
-        /* \uc0\u20351 \u29992  Inter \u23383 \u20307 \u20316 \u20026 \u32593 \u31449 \u20027 \u23383 \u20307  */\
-        body \{\
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\
-            background-color: #f1f5f9; /* \uc0\u20351 \u29992 \u19968 \u20010 \u26580 \u21644 \u30340 \u28784 \u33394 \u32972 \u26223  */\
-        \}\
-        /* \uc0\u23450 \u20041 \u19968 \u20010 \u37239 \u28843 \u30340 \u28176 \u21464 \u32972 \u26223  */\
-        .hero-gradient \{\
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);\
-        \}\
-    </style>\
-</head>\
-<body class="text-slate-800">\
-\
-    <!-- \uc0\u35821 \u35328 \u20999 \u25442 \u22120  -->\
-    <div class="fixed top-4 right-4 z-50">\
-        <div class="flex space-x-2 bg-white/20 backdrop-blur-sm p-1 rounded-full">\
-            <button onclick="changeLanguage('zh')" class="lang-btn" title="\uc0\u20013 \u25991 ">\u55356 \u56808 \u55356 \u56819 </button>\
-            <button onclick="changeLanguage('en')" class="lang-btn" title="English">\uc0\u55356 \u56812 \u55356 \u56807 </button>\
-            <button onclick="changeLanguage('fr')" class="lang-btn" title="Fran\'e7ais">\uc0\u55356 \u56811 \u55356 \u56823 </button>\
-        </div>\
-    </div>\
-\
-\
-    <!-- 1. \uc0\u39030 \u37096 \u20027 \u35270 \u35273 \u21306  (Hero Section) -->\
-    <header class="hero-gradient text-white">\
-        <div class="container mx-auto px-6 py-20 text-center">\
-            <!-- \uc0\u36825 \u26159 \u25918 \u32622 \u20320  "\u23567 \u29392 \u29432 " \u21513 \u31077 \u29289 \u30340 \u32477 \u20339 \u20301 \u32622 \u65281  -->\
-            <!-- <img src="path/to/your/fox-logo.svg" alt="\uc0\u21513 \u31077 \u29289 " class="mx-auto h-28 w-28 mb-6 rounded-full border-4 border-white/50 shadow-lg"> -->\
-            <h1 data-lang-key="heroTitle" class="text-4xl md:text-6xl font-black tracking-tight mb-4">11 Days, 11 MVPs</h1>\
-            <p data-lang-key="heroSubtitle" class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-8">\uc0\u19968 \u20010 \u20851 \u20110 \u24555 \u36895 \u26500 \u24314 \u19982 \u25345 \u32493 \u21019 \u36896 \u30340 \u20844 \u24320 \u25361 \u25112 \u12290 \u35265 \u35777 \u24819 \u27861 \u22914 \u20309 \u22312 24\u23567 \u26102 \u20869 \u20174 0\u21040 1\u12290 </p>\
-            <div data-lang-key="progress" class="inline-block bg-white/20 text-white font-bold py-2 px-5 rounded-full text-lg mb-10">\
-                \uc0\u24403 \u21069 \u36827 \u24230 : Day 1 / 11\
-            </div>\
-            <div>\
-                <a href="#mvp-showcase" data-lang-key="heroButton" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-slate-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">\
-                    \uc0\u26597 \u30475 \u25152 \u26377 \u20316 \u21697 \
-                </a>\
-            </div>\
-        </div>\
-    </header>\
-\
-    <main class="container mx-auto px-6 py-16 md:py-24">\
-\
-        <!-- 2. \uc0\u20851 \u20110 \u25361 \u25112  (About the Challenge) -->\
-        <section id="about-challenge" class="text-center max-w-3xl mx-auto mb-16 md:mb-24">\
-            <h2 data-lang-key="aboutTitle" class="text-3xl md:text-4xl font-bold mb-4">\uc0\u20851 \u20110 \u36825 \u20010 \u25361 \u25112 </h2>\
-            <p data-lang-key="aboutText" class="text-lg text-slate-600 leading-relaxed">\
-                \uc0\u25105 \u23558 \u22312 11\u22825 \u20869 \u65292 \u27599 \u22825 \u26500 \u24605 \u12289 \u35774 \u35745 \u12289 \u24320 \u21457 \u24182 \u19978 \u32447 \u19968 \u20010 \u26368 \u23567 \u21487 \u34892 \u24615 \u20135 \u21697  (MVP)\u12290 \u36825 \u20010 \u25361 \u25112 \u26088 \u22312 \u26497 \u38480 \u38203 \u28860 \u25105 \u30340 \u20840 \u26632 \u24320 \u21457 \u33021 \u21147 \u12289 \u20135 \u21697 \u24605 \u32500 \u21644 \u39033 \u30446 \u31649 \u29702 \u33021 \u21147 \u12290 \u27426 \u36814 \u20320 \u19968 \u21516 \u35265 \u35777 \u65281 \
-            </p>\
-        </section>\
-\
-        <!-- 3. MVP \uc0\u23637 \u31034 \u21306  (The MVPs Showcase) -->\
-        <section id="mvp-showcase">\
-            <h2 data-lang-key="mvpTitle" class="text-3xl md:text-4xl font-bold text-center mb-12">\uc0\u25105 \u30340  11 \u20010  MVP</h2>\
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">\
-\
-                <!-- MVP \uc0\u21345 \u29255 \u27169 \u26495  (\u22797 \u21046 \u36825 \u20010 \u26469 \u28155 \u21152 \u26032 \u30340 MVP) -->\
-                <!-- \uc0\u21345 \u29255  1 (\u24050 \u23436 \u25104 \u29366 \u24577 ) -->\
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 group">\
-                    <div class="relative">\
-                        <img src="https://placehold.co/600x400/3b82f6/white?text=MVP+1" alt="MVP 1 \uc0\u25130 \u22270 " class="w-full h-48 object-cover">\
-                        <div class="absolute top-4 right-4 bg-black/50 text-white text-sm font-bold py-1 px-3 rounded-full" data-lang-key="day" data-day="1">Day 1</div>\
-                    </div>\
-                    <div class="p-6">\
-                        <h3 class="text-xl font-bold mb-2" data-lang-key="projectName" data-day="1">\uc0\u39033 \u30446 \u21517 \u31216  #1</h3>\
-                        <p class="text-slate-600 mb-4 h-12" data-lang-key="projectDesc" data-day="1">\uc0\u36825 \u26159 \u19968 \u20010 \u31616 \u27905 \u32780 \u26377 \u21147 \u30340 \u39033 \u30446 \u31616 \u20171 \u65292 \u35828 \u26126 \u23427 \u30340 \u26680 \u24515 \u21151 \u33021 \u12290 </p>\
-                        <div class="flex flex-wrap gap-2 mb-6">\
-                            <span class="bg-sky-100 text-sky-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">React</span>\
-                            <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Node.js</span>\
-                            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">TailwindCSS</span>\
-                        </div>\
-                        <div class="flex space-x-4">\
-                            <a href="#" target="_blank" class="w-full text-center bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition duration-300" data-lang-key="demoButton">\uc0\u22312 \u32447 \u28436 \u31034 </a>\
-                            <a href="#" target="_blank" class="w-full text-center bg-slate-700 text-white font-semibold py-2 rounded-lg hover:bg-slate-800 transition duration-300" data-lang-key="sourceButton">\uc0\u26597 \u30475 \u28304 \u30721 </a>\
-                        </div>\
-                    </div>\
-                </div>\
-\
-                <!-- \uc0\u21345 \u29255  2 (\u24453 \u23436 \u25104 \u29366 \u24577 ) -->\
-                 <div class="bg-white rounded-xl shadow-md overflow-hidden border-2 border-dashed border-slate-300 flex flex-col items-center justify-center p-6 min-h-[400px]">\
-                    <div class="text-center text-slate-400">\
-                        <div class="bg-slate-200 text-slate-500 text-sm font-bold py-1 px-3 rounded-full mb-4 inline-block" data-lang-key="day" data-day="2">Day 2</div>\
-                        <h3 class="text-xl font-bold" data-lang-key="comingSoon">\uc0\u21363 \u23558 \u25581 \u26195 ...</h3>\
-                        <p class="mt-2" data-lang-key="stayTuned">\uc0\u25964 \u35831 \u26399 \u24453 \u19979 \u19968 \u20010 \u20316 \u21697 \u65281 </p>\
-                    </div>\
-                </div>\
-\
-                <!-- \uc0\u21345 \u29255  3 (\u24453 \u23436 \u25104 \u29366 \u24577 ) -->\
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border-2 border-dashed border-slate-300 flex flex-col items-center justify-center p-6 min-h-[400px]">\
-                    <div class="text-center text-slate-400">\
-                        <div class="bg-slate-200 text-slate-500 text-sm font-bold py-1 px-3 rounded-full mb-4 inline-block" data-lang-key="day" data-day="3">Day 3</div>\
-                        <h3 class="text-xl font-bold" data-lang-key="comingSoon">\uc0\u21363 \u23558 \u25581 \u26195 ...</h3>\
-                        <p class="mt-2" data-lang-key="stayTuned">\uc0\u25964 \u35831 \u26399 \u24453 \u19979 \u19968 \u20010 \u20316 \u21697 \u65281 </p>\
-                    </div>\
-                </div>\
-\
-                <!-- \uc0\u22312 \u36825 \u37324 \u32487 \u32493 \u28155 \u21152  Day 4 \u21040  Day 11 \u30340 \u21345 \u29255 ... -->\
-\
-            </div>\
-        </section>\
-\
-        <!-- \uc0\u26032 \u22686 \u65306 \u35838 \u31243 \u21806 \u21334 \u21306  -->\
-        <section id="course-section" class="mt-20 md:mt-32">\
-            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 max-w-4xl mx-auto">\
-                <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">\
-                    <div>\
-                        <span data-lang-key="courseTag" class="inline-block bg-purple-100 text-purple-800 font-semibold px-3 py-1 rounded-full text-sm mb-4">\uc0\u25105 \u30340 \u35838 \u31243 </span>\
-                        <h2 data-lang-key="courseTitle" class="text-3xl md:text-4xl font-bold mb-4">\uc0\u20174 0\u21040 1\u65306 \u21019 \u24847 \u23454 \u29616 \u22823 \u24072 \u35838 </h2>\
-                        <p data-lang-key="courseDesc" class="text-slate-600 leading-relaxed mb-6">\
-                            \uc0\u36825 \u38376 \u35838 \u31243 \u23558 \u25945 \u20320 \u22914 \u20309 \u28304 \u28304 \u19981 \u26029 \u22320 \u21457 \u29616 \u22909 \u30340 \u21019 \u24847 \u65292 \u24182 \u25351 \u23548 \u20320 \u19968 \u27493 \u27493 \u23558 \u24819 \u27861 \u21464 \u20026 \u29616 \u23454 \u65292 \u23436 \u25104 \u20174 0\u21040 1\u30340 \u26500 \u24314 \u12290 \
-                        </p>\
-                        <ul class="space-y-2 text-slate-700">\
-                            <li class="flex items-center">\
-                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>\
-                                <span data-lang-key="courseFeature1">\uc0\u21457 \u29616 \u21019 \u24847 \u30340 \u31995 \u32479 \u26041 \u27861 </span>\
-                            </li>\
-                            <li class="flex items-center">\
-                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>\
-                                <span data-lang-key="courseFeature2">MVP \uc0\u20135 \u21697 \u35774 \u35745 \u19982 \u39564 \u35777 </span>\
-                            </li>\
-                            <li class="flex items-center">\
-                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>\
-                                <span data-lang-key="courseFeature3">\uc0\u24555 \u36895 \u26500 \u24314 \u19982 \u19978 \u32447 \u25216 \u24039 </span>\
-                            </li>\
-                        </ul>\
-                    </div>\
-                    <div class="bg-slate-50 rounded-lg p-8 text-center">\
-                        <span data-lang-key="priceLabel" class="text-lg text-slate-500">\uc0\u38480 \u26102 \u26089 \u40479 \u20215 </span>\
-                        <div class="text-5xl font-bold my-4">$49</div>\
-                        <button id="checkout-button" class="w-full bg-blue-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">\
-                            <span data-lang-key="buyButton">\uc0\u31435 \u21363 \u36141 \u20080 </span>\
-                        </button>\
-                        <p data-lang-key="securePayment" class="text-xs text-slate-400 mt-4">\uc0\u36890 \u36807  Stripe \u23433 \u20840 \u25903 \u20184 </p>\
-                    </div>\
-                </div>\
-            </div>\
-        </section>\
-\
-        <!-- 4. \uc0\u20851 \u20110 \u25105  (About Me) -->\
-        <section id="about-me" class="mt-20 md:mt-32 bg-white rounded-xl shadow-lg p-8 md:p-12">\
-            <div class="flex flex-col md:flex-row items-center text-center md:text-left">\
-                <!-- \uc0\u21516 \u26679 \u65292 \u36825 \u37324 \u20063 \u21487 \u20197 \u25918 \u20320 \u30340 \u23567 \u29392 \u29432 \u22836 \u20687  -->\
-                <img src="https://placehold.co/150x150/8b5cf6/white?text=C" alt="\uc0\u20320 \u30340 \u22836 \u20687 " class="w-32 h-32 rounded-full mb-6 md:mb-0 md:mr-10 flex-shrink-0 shadow-md">\
-                <div>\
-                    <h2 class="text-3xl font-bold mb-2" data-lang-key="aboutMeTitle">\uc0\u25105 \u26159  [\u20320 \u30340 \u21517 \u23383 \u25110 ID]</h2>\
-                    <p class="text-lg text-slate-600 mb-4 leading-relaxed" data-lang-key="aboutMeText">\
-                        \uc0\u19968 \u21517 \u21069 \u31471 \u24320 \u21457 \u32773 \u12289 \u29420 \u31435 \u21019 \u36896 \u32773 \u21644 \u32456 \u36523 \u23398 \u20064 \u32773 \u12290 \u25105 \u28909 \u34935 \u20110 \u29992 \u20195 \u30721 \u23558 \u26377 \u36259 \u30340 \u24819 \u27861 \u21464 \u20026 \u29616 \u23454 \u12290 \u20320 \u21487 \u20197 \u22312 \u19979 \u38754 \u36825 \u20123 \u22320 \u26041 \u25214 \u21040 \u25105 \u12290 \
-                    </p>\
-                    <!-- \uc0\u31038 \u20132 \u38142 \u25509  -->\
-                    <div class="flex space-x-6 justify-center md:justify-start mt-6">\
-                        <a href="https://github.com/your-github" target="_blank" title="GitHub" class="text-slate-500 hover:text-slate-800 transition-colors">\
-                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>\
-                        </a>\
-                        <a href="https://twitter.com/your-twitter" target="_blank" title="X (Twitter)" class="text-slate-500 hover:text-slate-800 transition-colors">\
-                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>\
-                        </a>\
-                    </div>\
-                </div>\
-            </div>\
-        </section>\
-\
-    </main>\
-\
-    <!-- 5. \uc0\u39029 \u33050  (Footer) -->\
-    <footer class="text-center py-8 bg-slate-800 text-slate-400 mt-16 md:mt-24">\
-        <p data-lang-key="footerCopyright">&copy; 2025 [\uc0\u20320 \u30340 \u21517 \u23383 ]. All Rights Reserved.</p>\
-        <p data-lang-key="footerSubtitle" class="text-sm mt-2">\uc0\u20026  11 Days 11 MVPs \u25361 \u25112 \u32780 \u26500 \u24314 </p>\
-    </footer>\
-\
-    <script>\
-        const translations = \{\
-            zh: \{\
-                // ... \uc0\u24050 \u26377 \u32763 \u35793  ...\
-                heroTitle: "11\uc0\u22825 \u65292 11\u20010 MVP",\
-                heroSubtitle: "\uc0\u19968 \u20010 \u20851 \u20110 \u24555 \u36895 \u26500 \u24314 \u19982 \u25345 \u32493 \u21019 \u36896 \u30340 \u20844 \u24320 \u25361 \u25112 \u12290 \u35265 \u35777 \u24819 \u27861 \u22914 \u20309 \u22312 24\u23567 \u26102 \u20869 \u20174 0\u21040 1\u12290 ",\
-                progress: "\uc0\u24403 \u21069 \u36827 \u24230 : Day \{day\} / 11",\
-                heroButton: "\uc0\u26597 \u30475 \u25152 \u26377 \u20316 \u21697 ",\
-                aboutTitle: "\uc0\u20851 \u20110 \u36825 \u20010 \u25361 \u25112 ",\
-                aboutText: "\uc0\u25105 \u23558 \u22312 11\u22825 \u20869 \u65292 \u27599 \u22825 \u26500 \u24605 \u12289 \u35774 \u35745 \u12289 \u24320 \u21457 \u24182 \u19978 \u32447 \u19968 \u20010 \u26368 \u23567 \u21487 \u34892 \u24615 \u20135 \u21697  (MVP)\u12290 \u36825 \u20010 \u25361 \u25112 \u26088 \u22312 \u26497 \u38480 \u38203 \u28860 \u25105 \u30340 \u20840 \u26632 \u24320 \u21457 \u33021 \u21147 \u12289 \u20135 \u21697 \u24605 \u32500 \u21644 \u39033 \u30446 \u31649 \u29702 \u33021 \u21147 \u12290 \u27426 \u36814 \u20320 \u19968 \u21516 \u35265 \u35777 \u65281 ",\
-                mvpTitle: "\uc0\u25105 \u30340  11 \u20010  MVP",\
-                day: "\uc0\u31532  \{day\} \u22825 ",\
-                projectName: "\uc0\u39033 \u30446 \u21517 \u31216  #\{day\}",\
-                projectDesc: "\uc0\u36825 \u26159 \u19968 \u20010 \u31616 \u27905 \u32780 \u26377 \u21147 \u30340 \u39033 \u30446 \u31616 \u20171 \u65292 \u35828 \u26126 \u23427 \u30340 \u26680 \u24515 \u21151 \u33021 \u12290 ",\
-                demoButton: "\uc0\u22312 \u32447 \u28436 \u31034 ",\
-                sourceButton: "\uc0\u26597 \u30475 \u28304 \u30721 ",\
-                comingSoon: "\uc0\u21363 \u23558 \u25581 \u26195 ...",\
-                stayTuned: "\uc0\u25964 \u35831 \u26399 \u24453 \u19979 \u19968 \u20010 \u20316 \u21697 \u65281 ",\
-                aboutMeTitle: "\uc0\u25105 \u26159  [\u20320 \u30340 \u21517 \u23383 \u25110 ID]",\
-                aboutMeText: "\uc0\u19968 \u21517 \u21069 \u31471 \u24320 \u21457 \u32773 \u12289 \u29420 \u31435 \u21019 \u36896 \u32773 \u21644 \u32456 \u36523 \u23398 \u20064 \u32773 \u12290 \u25105 \u28909 \u34935 \u20110 \u29992 \u20195 \u30721 \u23558 \u26377 \u36259 \u30340 \u24819 \u27861 \u21464 \u20026 \u29616 \u23454 \u12290 \u20320 \u21487 \u20197 \u22312 \u19979 \u38754 \u36825 \u20123 \u22320 \u26041 \u25214 \u21040 \u25105 \u12290 ",\
-                footerCopyright: "&copy; 2025 [\uc0\u20320 \u30340 \u21517 \u23383 ]. \u20445 \u30041 \u25152 \u26377 \u26435 \u21033 \u12290 ",\
-                footerSubtitle: "\uc0\u20026  11 Days 11 MVPs \u25361 \u25112 \u32780 \u26500 \u24314 ",\
-                // \uc0\u26032 \u22686 \u35838 \u31243 \u32763 \u35793 \
-                courseTag: "\uc0\u25105 \u30340 \u35838 \u31243 ",\
-                courseTitle: "\uc0\u20174 0\u21040 1\u65306 \u21019 \u24847 \u23454 \u29616 \u22823 \u24072 \u35838 ",\
-                courseDesc: "\uc0\u36825 \u38376 \u35838 \u31243 \u23558 \u25945 \u20320 \u22914 \u20309 \u28304 \u28304 \u19981 \u26029 \u22320 \u21457 \u29616 \u22909 \u30340 \u21019 \u24847 \u65292 \u24182 \u25351 \u23548 \u20320 \u19968 \u27493 \u27493 \u23558 \u24819 \u27861 \u21464 \u20026 \u29616 \u23454 \u65292 \u23436 \u25104 \u20174 0\u21040 1\u30340 \u26500 \u24314 \u12290 ",\
-                courseFeature1: "\uc0\u21457 \u29616 \u21019 \u24847 \u30340 \u31995 \u32479 \u26041 \u27861 ",\
-                courseFeature2: "MVP \uc0\u20135 \u21697 \u35774 \u35745 \u19982 \u39564 \u35777 ",\
-                courseFeature3: "\uc0\u24555 \u36895 \u26500 \u24314 \u19982 \u19978 \u32447 \u25216 \u24039 ",\
-                priceLabel: "\uc0\u38480 \u26102 \u26089 \u40479 \u20215 ",\
-                buyButton: "\uc0\u31435 \u21363 \u36141 \u20080 ",\
-                securePayment: "\uc0\u36890 \u36807  Stripe \u23433 \u20840 \u25903 \u20184 "\
-            \},\
-            en: \{\
-                // ... \uc0\u24050 \u26377 \u32763 \u35793  ...\
-                heroTitle: "11 Days, 11 MVPs",\
-                heroSubtitle: "A public challenge about rapid building and continuous creation. Witness ideas go from 0 to 1 in 24 hours.",\
-                progress: "Current Progress: Day \{day\} / 11",\
-                heroButton: "View All Projects",\
-                aboutTitle: "About The Challenge",\
-                aboutText: "I will conceive, design, develop, and launch a Minimum Viable Product (MVP) every day for 11 days. This challenge aims to push my full-stack development, product thinking, and project management skills to the limit. You are welcome to witness it!",\
-                mvpTitle: "My 11 MVPs",\
-                day: "Day \{day\}",\
-                projectName: "Project Name #\{day\}",\
-                projectDesc: "A concise and powerful project brief explaining its core functionality.",\
-                demoButton: "Live Demo",\
-                sourceButton: "Source Code",\
-                comingSoon: "Coming Soon...",\
-                stayTuned: "Stay tuned for the next creation!",\
-                aboutMeTitle: "I am [Your Name or ID]",\
-                aboutMeText: "A front-end developer, indie maker, and lifelong learner. I'm passionate about turning interesting ideas into reality with code. You can find me in the places below.",\
-                footerCopyright: "&copy; 2025 [Your Name]. All Rights Reserved.",\
-                footerSubtitle: "Built for the 11 Days 11 MVPs Challenge",\
-                // \uc0\u26032 \u22686 \u35838 \u31243 \u32763 \u35793 \
-                courseTag: "My Course",\
-                courseTitle: "From 0 to 1: The Idea to Reality Masterclass",\
-                courseDesc: "This course teaches you how to consistently find great ideas and guides you step-by-step to turn them into reality, completing the build from 0 to 1.",\
-                courseFeature1: "Systematic methods for idea discovery",\
-                courseFeature2: "MVP design and validation",\
-                courseFeature3: "Rapid building and launching techniques",\
-                priceLabel: "Limited-Time Early Bird Price",\
-                buyButton: "Buy Now",\
-                securePayment: "Secure payment via Stripe"\
-            \},\
-            fr: \{\
-                // ... \uc0\u24050 \u26377 \u32763 \u35793  ...\
-                heroTitle: "11 Jours, 11 MVPs",\
-                heroSubtitle: "Un d\'e9fi public sur la construction rapide et la cr\'e9ation continue. Voyez les id\'e9es passer de 0 \'e0 1 en 24 heures.",\
-                progress: "Progression : Jour \{day\} / 11",\
-                heroButton: "Voir tous les projets",\
-                aboutTitle: "\'c0 propos du d\'e9fi",\
-                aboutText: "Je vais concevoir, designer, d\'e9velopper et lancer un Produit Minimum Viable (MVP) chaque jour pendant 11 jours. Ce d\'e9fi vise \'e0 pousser mes comp\'e9tences en d\'e9veloppement full-stack, en conception de produits et en gestion de projet \'e0 la limite. Soyez les bienvenus pour y assister !",\
-                mvpTitle: "Mes 11 MVPs",\
-                day: "Jour \{day\}",\
-                projectName: "Nom du Projet #\{day\}",\
-                projectDesc: "Une br\'e8ve description de projet concise et percutante expliquant sa fonctionnalit\'e9 principale.",\
-                demoButton: "D\'e9mo en direct",\
-                sourceButton: "Code Source",\
-                comingSoon: "Bient\'f4t disponible...",\
-                stayTuned: "Restez \'e0 l'\'e9coute pour la prochaine cr\'e9ation !",\
-                aboutMeTitle: "Je suis [Votre Nom ou ID]",\
-                aboutMeText: "Un d\'e9veloppeur front-end, cr\'e9ateur ind\'e9pendant et apprenant permanent. Je suis passionn\'e9 par la transformation d'id\'e9es int\'e9ressantes en r\'e9alit\'e9 avec du code. Vous pouvez me trouver aux endroits ci-dessous.",\
-                footerCopyright: "&copy; 2025 [Votre Nom]. Tous droits r\'e9serv\'e9s.",\
-                footerSubtitle: "Construit pour le d\'e9fi 11 Jours 11 MVPs",\
-                 // \uc0\u26032 \u22686 \u35838 \u31243 \u32763 \u35793 \
-                courseTag: "Mon Cours",\
-                courseTitle: "De 0 \'e0 1 : Masterclass de l'Id\'e9e \'e0 la R\'e9alit\'e9",\
-                courseDesc: "Ce cours vous apprend \'e0 trouver constamment de bonnes id\'e9es et vous guide pas \'e0 pas pour les transformer en r\'e9alit\'e9, en r\'e9alisant la construction de 0 \'e0 1.",\
-                courseFeature1: "M\'e9thodes syst\'e9matiques de d\'e9couverte d'id\'e9es",\
-                courseFeature2: "Conception et validation de MVP",\
-                courseFeature3: "Techniques de construction et de lancement rapides",\
-                priceLabel: "Prix de lancement \'e0 dur\'e9e limit\'e9e",\
-                buyButton: "Acheter maintenant",\
-                securePayment: "Paiement s\'e9curis\'e9 via Stripe"\
-            \}\
-        \};\
-\
-        let currentLang = 'zh';\
-\
-        function changeLanguage(lang) \{\
-            if (!translations[lang]) return;\
-            currentLang = lang;\
-            document.documentElement.lang = lang;\
-            \
-            document.querySelectorAll('[data-lang-key]').forEach(el => \{\
-                const key = el.dataset.langKey;\
-                let text = translations[lang][key] || translations['en'][key];\
-                \
-                if (el.dataset.day) \{\
-                    text = text.replace('\{day\}', el.dataset.day);\
-                \}\
-\
-                if (key === 'progress') \{\
-                    // \uc0\u36825 \u26159 \u19968 \u20010 \u31616 \u21333 \u30340 \u31034 \u20363 \u65292 \u23454 \u38469 \u39033 \u30446 \u20013 \u20320 \u21487 \u33021 \u38656 \u35201 \u21160 \u24577 \u33719 \u21462 \u36827 \u24230 \
-                    text = text.replace('\{day\}', '1');\
-                \}\
-\
-                el.innerHTML = text;\
-            \});\
-            \
-            // \uc0\u26356 \u26032 \u35821 \u35328 \u25353 \u38062 \u26679 \u24335 \
-             document.querySelectorAll('.lang-btn').forEach(btn => \{\
-                btn.classList.remove('bg-white', 'scale-110', 'shadow-lg');\
-                btn.classList.add('opacity-70');\
-            \});\
-            const activeBtn = document.querySelector(`.lang-btn[onclick="changeLanguage('$\{lang\}')"]`);\
-            if (activeBtn) \{\
-                activeBtn.classList.add('bg-white', 'scale-110', 'shadow-lg');\
-                activeBtn.classList.remove('opacity-70');\
-            \}\
-        \}\
-\
-        document.addEventListener('DOMContentLoaded', () => \{\
-            const userLang = navigator.language.split('-')[0];\
-            const langToLoad = translations[userLang] ? userLang : 'zh';\
-            changeLanguage(langToLoad);\
-        \});\
-\
-        // \uc0\u32473 \u25353 \u38062 \u28155 \u21152 \u22522 \u30784 \u26679 \u24335 \
-        document.querySelectorAll('.lang-btn').forEach(btn => \{\
-            btn.classList.add('w-10', 'h-10', 'rounded-full', 'text-xl', 'flex', 'items-center', 'justify-center', 'transition-all', 'duration-300', 'cursor-pointer', 'hover:opacity-100');\
-        \});\
-\
-        // --- \uc0\u26032 \u22686  Stripe \u25903 \u20184 \u36923 \u36753  ---\
-        \
-        // 1. \uc0\u26367 \u25442 \u25104 \u20320 \u30340  Stripe \u20844 \u24320 \u23494 \u38053 \
-        const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY'); \
-        const checkoutButton = document.getElementById('checkout-button');\
-\
-        checkoutButton.addEventListener('click', async () => \{\
-            try \{\
-                // \uc0\u25353 \u38062 \u21152 \u36733 \u29366 \u24577  (\u21487 \u36873 \u65292 \u20294 \u24314 \u35758 )\
-                checkoutButton.disabled = true;\
-                checkoutButton.innerHTML = '\uc0\u22788 \u29702 \u20013 ...';\
-\
-                // 2. \uc0\u35843 \u29992 \u20320 \u30340 \u21518 \u31471 \u20989 \u25968 \u26469 \u21019 \u24314 \u25903 \u20184 \u20250 \u35805 \
-                //    \uc0\u20320 \u38656 \u35201 \u21019 \u24314 \u19968 \u20010  `/api/create-checkout-session` \u30340 \u21518 \u31471 \u25509 \u21475 \
-                const response = await fetch('/api/create-checkout-session', \{\
-                    method: 'POST',\
-                \});\
-\
-                const session = await response.json();\
-\
-                // 3. \uc0\u20351 \u29992 \u36820 \u22238 \u30340  session ID \u36339 \u36716 \u21040  Stripe \u25903 \u20184 \u39029 \u38754 \
-                const result = await stripe.redirectToCheckout(\{\
-                    sessionId: session.id,\
-                \});\
-\
-                if (result.error) \{\
-                    // \uc0\u22914 \u26524 \u36339 \u36716 \u22833 \u36133 , \u26174 \u31034 \u38169 \u35823 \u20449 \u24687 \
-                    alert(result.error.message);\
-                    checkoutButton.disabled = false;\
-                    checkoutButton.innerHTML = translations[currentLang].buyButton;\
-                \}\
-            \} catch (error) \{\
-                console.error('Error:', error);\
-                checkoutButton.disabled = false;\
-                checkoutButton.innerHTML = translations[currentLang].buyButton;\
-            \}\
-        \});\
-\
-\
-    </script>\
-</body>\
-</html>\
-\
-}
+    <!-- 语言切换器 -->
+    <div class="fixed top-4 right-4 z-50">
+        <div class="flex space-x-2 bg-white/20 backdrop-blur-sm p-1 rounded-full">
+            <button onclick="changeLanguage('zh')" class="lang-btn" title="中文">🇨🇳</button>
+            <button onclick="changeLanguage('en')" class="lang-btn" title="English">🇬🇧</button>
+            <button onclick="changeLanguage('fr')" class="lang-btn" title="Français">🇫🇷</button>
+        </div>
+    </div>
+
+
+    <!-- 1. 顶部主视觉区 (Hero Section) -->
+    <header class="hero-gradient text-white">
+        <div class="container mx-auto px-6 py-20 text-center">
+            <!-- 这是放置你 "小狐狸" 吉祥物的绝佳位置！ -->
+            <!-- <img src="path/to/your/fox-logo.svg" alt="吉祥物" class="mx-auto h-28 w-28 mb-6 rounded-full border-4 border-white/50 shadow-lg"> -->
+            <h1 data-lang-key="heroTitle" class="text-4xl md:text-6xl font-black tracking-tight mb-4">11 Days, 11 MVPs</h1>
+            <p data-lang-key="heroSubtitle" class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-8">一个关于快速构建与持续创造的公开挑战。见证想法如何在24小时内从0到1。</p>
+            <div data-lang-key="progress" class="inline-block bg-white/20 text-white font-bold py-2 px-5 rounded-full text-lg mb-10">
+                当前进度: Day 1 / 11
+            </div>
+            <div>
+                <a href="#mvp-showcase" data-lang-key="heroButton" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-slate-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    查看所有作品
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16 md:py-24">
+
+        <!-- 2. 关于挑战 (About the Challenge) -->
+        <section id="about-challenge" class="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+            <h2 data-lang-key="aboutTitle" class="text-3xl md:text-4xl font-bold mb-4">关于这个挑战</h2>
+            <p data-lang-key="aboutText" class="text-lg text-slate-600 leading-relaxed">
+                我将在11天内，每天构思、设计、开发并上线一个最小可行性产品 (MVP)。这个挑战旨在极限锻炼我的全栈开发能力、产品思维和项目管理能力。欢迎你一同见证！
+            </p>
+        </section>
+
+        <!-- 3. MVP 展示区 (The MVPs Showcase) -->
+        <section id="mvp-showcase">
+            <h2 data-lang-key="mvpTitle" class="text-3xl md:text-4xl font-bold text-center mb-12">我的 11 个 MVP</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- MVP 卡片模板 (复制这个来添加新的MVP) -->
+                <!-- 卡片 1 (已完成状态) -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400/3b82f6/white?text=MVP+1" alt="MVP 1 截图" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-black/50 text-white text-sm font-bold py-1 px-3 rounded-full" data-lang-key="day" data-day="1">Day 1</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2" data-lang-key="projectName" data-day="1">项目名称 #1</h3>
+                        <p class="text-slate-600 mb-4 h-12" data-lang-key="projectDesc" data-day="1">这是一个简洁而有力的项目简介，说明它的核心功能。</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-sky-100 text-sky-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">React</span>
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Node.js</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">TailwindCSS</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" target="_blank" class="w-full text-center bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition duration-300" data-lang-key="demoButton">在线演示</a>
+                            <a href="#" target="_blank" class="w-full text-center bg-slate-700 text-white font-semibold py-2 rounded-lg hover:bg-slate-800 transition duration-300" data-lang-key="sourceButton">查看源码</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 卡片 2 (待完成状态) -->
+                 <div class="bg-white rounded-xl shadow-md overflow-hidden border-2 border-dashed border-slate-300 flex flex-col items-center justify-center p-6 min-h-[400px]">
+                    <div class="text-center text-slate-400">
+                        <div class="bg-slate-200 text-slate-500 text-sm font-bold py-1 px-3 rounded-full mb-4 inline-block" data-lang-key="day" data-day="2">Day 2</div>
+                        <h3 class="text-xl font-bold" data-lang-key="comingSoon">即将揭晓...</h3>
+                        <p class="mt-2" data-lang-key="stayTuned">敬请期待下一个作品！</p>
+                    </div>
+                </div>
+
+                <!-- 卡片 3 (待完成状态) -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border-2 border-dashed border-slate-300 flex flex-col items-center justify-center p-6 min-h-[400px]">
+                    <div class="text-center text-slate-400">
+                        <div class="bg-slate-200 text-slate-500 text-sm font-bold py-1 px-3 rounded-full mb-4 inline-block" data-lang-key="day" data-day="3">Day 3</div>
+                        <h3 class="text-xl font-bold" data-lang-key="comingSoon">即将揭晓...</h3>
+                        <p class="mt-2" data-lang-key="stayTuned">敬请期待下一个作品！</p>
+                    </div>
+                </div>
+
+                <!-- 在这里继续添加 Day 4 到 Day 11 的卡片... -->
+
+            </div>
+        </section>
+
+        <!-- 新增：课程售卖区 -->
+        <section id="course-section" class="mt-20 md:mt-32">
+            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div>
+                        <span data-lang-key="courseTag" class="inline-block bg-purple-100 text-purple-800 font-semibold px-3 py-1 rounded-full text-sm mb-4">我的课程</span>
+                        <h2 data-lang-key="courseTitle" class="text-3xl md:text-4xl font-bold mb-4">从0到1：创意实现大师课</h2>
+                        <p data-lang-key="courseDesc" class="text-slate-600 leading-relaxed mb-6">
+                            这门课程将教你如何源源不断地发现好的创意，并指导你一步步将想法变为现实，完成从0到1的构建。
+                        </p>
+                        <ul class="space-y-2 text-slate-700">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span data-lang-key="courseFeature1">发现创意的系统方法</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span data-lang-key="courseFeature2">MVP 产品设计与验证</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span data-lang-key="courseFeature3">快速构建与上线技巧</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-8 text-center">
+                        <span data-lang-key="priceLabel" class="text-lg text-slate-500">限时早鸟价</span>
+                        <div class="text-5xl font-bold my-4">$49</div>
+                        <button id="checkout-button" class="w-full bg-blue-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <span data-lang-key="buyButton">立即购买</span>
+                        </button>
+                        <p data-lang-key="securePayment" class="text-xs text-slate-400 mt-4">通过 Stripe 安全支付</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 关于我 (About Me) -->
+        <section id="about-me" class="mt-20 md:mt-32 bg-white rounded-xl shadow-lg p-8 md:p-12">
+            <div class="flex flex-col md:flex-row items-center text-center md:text-left">
+                <!-- 同样，这里也可以放你的小狐狸头像 -->
+                <img src="https://placehold.co/150x150/8b5cf6/white?text=C" alt="你的头像" class="w-32 h-32 rounded-full mb-6 md:mb-0 md:mr-10 flex-shrink-0 shadow-md">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2" data-lang-key="aboutMeTitle">我是 [你的名字或ID]</h2>
+                    <p class="text-lg text-slate-600 mb-4 leading-relaxed" data-lang-key="aboutMeText">
+                        一名前端开发者、独立创造者和终身学习者。我热衷于用代码将有趣的想法变为现实。你可以在下面这些地方找到我。
+                    </p>
+                    <!-- 社交链接 -->
+                    <div class="flex space-x-6 justify-center md:justify-start mt-6">
+                        <a href="https://github.com/your-github" target="_blank" title="GitHub" class="text-slate-500 hover:text-slate-800 transition-colors">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                        </a>
+                        <a href="https://twitter.com/your-twitter" target="_blank" title="X (Twitter)" class="text-slate-500 hover:text-slate-800 transition-colors">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 5. 页脚 (Footer) -->
+    <footer class="text-center py-8 bg-slate-800 text-slate-400 mt-16 md:mt-24">
+        <p data-lang-key="footerCopyright">&copy; 2025 [你的名字]. All Rights Reserved.</p>
+        <p data-lang-key="footerSubtitle" class="text-sm mt-2">为 11 Days 11 MVPs 挑战而构建</p>
+    </footer>
+
+    <script>
+        const translations = {
+            zh: {
+                // ... 已有翻译 ...
+                heroTitle: "11天，11个MVP",
+                heroSubtitle: "一个关于快速构建与持续创造的公开挑战。见证想法如何在24小时内从0到1。",
+                progress: "当前进度: Day {day} / 11",
+                heroButton: "查看所有作品",
+                aboutTitle: "关于这个挑战",
+                aboutText: "我将在11天内，每天构思、设计、开发并上线一个最小可行性产品 (MVP)。这个挑战旨在极限锻炼我的全栈开发能力、产品思维和项目管理能力。欢迎你一同见证！",
+                mvpTitle: "我的 11 个 MVP",
+                day: "第 {day} 天",
+                projectName: "项目名称 #{day}",
+                projectDesc: "这是一个简洁而有力的项目简介，说明它的核心功能。",
+                demoButton: "在线演示",
+                sourceButton: "查看源码",
+                comingSoon: "即将揭晓...",
+                stayTuned: "敬请期待下一个作品！",
+                aboutMeTitle: "我是 [你的名字或ID]",
+                aboutMeText: "一名前端开发者、独立创造者和终身学习者。我热衷于用代码将有趣的想法变为现实。你可以在下面这些地方找到我。",
+                footerCopyright: "&copy; 2025 [你的名字]. 保留所有权利。",
+                footerSubtitle: "为 11 Days 11 MVPs 挑战而构建",
+                // 新增课程翻译
+                courseTag: "我的课程",
+                courseTitle: "从0到1：创意实现大师课",
+                courseDesc: "这门课程将教你如何源源不断地发现好的创意，并指导你一步步将想法变为现实，完成从0到1的构建。",
+                courseFeature1: "发现创意的系统方法",
+                courseFeature2: "MVP 产品设计与验证",
+                courseFeature3: "快速构建与上线技巧",
+                priceLabel: "限时早鸟价",
+                buyButton: "立即购买",
+                securePayment: "通过 Stripe 安全支付"
+            },
+            en: {
+                // ... 已有翻译 ...
+                heroTitle: "11 Days, 11 MVPs",
+                heroSubtitle: "A public challenge about rapid building and continuous creation. Witness ideas go from 0 to 1 in 24 hours.",
+                progress: "Current Progress: Day {day} / 11",
+                heroButton: "View All Projects",
+                aboutTitle: "About The Challenge",
+                aboutText: "I will conceive, design, develop, and launch a Minimum Viable Product (MVP) every day for 11 days. This challenge aims to push my full-stack development, product thinking, and project management skills to the limit. You are welcome to witness it!",
+                mvpTitle: "My 11 MVPs",
+                day: "Day {day}",
+                projectName: "Project Name #{day}",
+                projectDesc: "A concise and powerful project brief explaining its core functionality.",
+                demoButton: "Live Demo",
+                sourceButton: "Source Code",
+                comingSoon: "Coming Soon...",
+                stayTuned: "Stay tuned for the next creation!",
+                aboutMeTitle: "I am [Your Name or ID]",
+                aboutMeText: "A front-end developer, indie maker, and lifelong learner. I'm passionate about turning interesting ideas into reality with code. You can find me in the places below.",
+                footerCopyright: "&copy; 2025 [Your Name]. All Rights Reserved.",
+                footerSubtitle: "Built for the 11 Days 11 MVPs Challenge",
+                // 新增课程翻译
+                courseTag: "My Course",
+                courseTitle: "From 0 to 1: The Idea to Reality Masterclass",
+                courseDesc: "This course teaches you how to consistently find great ideas and guides you step-by-step to turn them into reality, completing the build from 0 to 1.",
+                courseFeature1: "Systematic methods for idea discovery",
+                courseFeature2: "MVP design and validation",
+                courseFeature3: "Rapid building and launching techniques",
+                priceLabel: "Limited-Time Early Bird Price",
+                buyButton: "Buy Now",
+                securePayment: "Secure payment via Stripe"
+            },
+            fr: {
+                // ... 已有翻译 ...
+                heroTitle: "11 Jours, 11 MVPs",
+                heroSubtitle: "Un défi public sur la construction rapide et la création continue. Voyez les idées passer de 0 à 1 en 24 heures.",
+                progress: "Progression : Jour {day} / 11",
+                heroButton: "Voir tous les projets",
+                aboutTitle: "À propos du défi",
+                aboutText: "Je vais concevoir, designer, développer et lancer un Produit Minimum Viable (MVP) chaque jour pendant 11 jours. Ce défi vise à pousser mes compétences en développement full-stack, en conception de produits et en gestion de projet à la limite. Soyez les bienvenus pour y assister !",
+                mvpTitle: "Mes 11 MVPs",
+                day: "Jour {day}",
+                projectName: "Nom du Projet #{day}",
+                projectDesc: "Une brève description de projet concise et percutante expliquant sa fonctionnalité principale.",
+                demoButton: "Démo en direct",
+                sourceButton: "Code Source",
+                comingSoon: "Bientôt disponible...",
+                stayTuned: "Restez à l'écoute pour la prochaine création !",
+                aboutMeTitle: "Je suis [Votre Nom ou ID]",
+                aboutMeText: "Un développeur front-end, créateur indépendant et apprenant permanent. Je suis passionné par la transformation d'idées intéressantes en réalité avec du code. Vous pouvez me trouver aux endroits ci-dessous.",
+                footerCopyright: "&copy; 2025 [Votre Nom]. Tous droits réservés.",
+                footerSubtitle: "Construit pour le défi 11 Jours 11 MVPs",
+                 // 新增课程翻译
+                courseTag: "Mon Cours",
+                courseTitle: "De 0 à 1 : Masterclass de l'Idée à la Réalité",
+                courseDesc: "Ce cours vous apprend à trouver constamment de bonnes idées et vous guide pas à pas pour les transformer en réalité, en réalisant la construction de 0 à 1.",
+                courseFeature1: "Méthodes systématiques de découverte d'idées",
+                courseFeature2: "Conception et validation de MVP",
+                courseFeature3: "Techniques de construction et de lancement rapides",
+                priceLabel: "Prix de lancement à durée limitée",
+                buyButton: "Acheter maintenant",
+                securePayment: "Paiement sécurisé via Stripe"
+            }
+        };
+
+        let currentLang = 'zh';
+
+        function changeLanguage(lang) {
+            if (!translations[lang]) return;
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.dataset.langKey;
+                let text = translations[lang][key] || translations['en'][key];
+                
+                if (el.dataset.day) {
+                    text = text.replace('{day}', el.dataset.day);
+                }
+
+                if (key === 'progress') {
+                    // 这是一个简单的示例，实际项目中你可能需要动态获取进度
+                    text = text.replace('{day}', '1');
+                }
+
+                el.innerHTML = text;
+            });
+            
+            // 更新语言按钮样式
+             document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'scale-110', 'shadow-lg');
+                btn.classList.add('opacity-70');
+            });
+            const activeBtn = document.querySelector(`.lang-btn[onclick="changeLanguage('${lang}')"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-white', 'scale-110', 'shadow-lg');
+                activeBtn.classList.remove('opacity-70');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const userLang = navigator.language.split('-')[0];
+            const langToLoad = translations[userLang] ? userLang : 'zh';
+            changeLanguage(langToLoad);
+        });
+
+        // 给按钮添加基础样式
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.add('w-10', 'h-10', 'rounded-full', 'text-xl', 'flex', 'items-center', 'justify-center', 'transition-all', 'duration-300', 'cursor-pointer', 'hover:opacity-100');
+        });
+
+        // --- 新增 Stripe 支付逻辑 ---
+        
+        // 1. 替换成你的 Stripe 公开密钥
+        const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY'); 
+        const checkoutButton = document.getElementById('checkout-button');
+
+        checkoutButton.addEventListener('click', async () => {
+            try {
+                // 按钮加载状态 (可选，但建议)
+                checkoutButton.disabled = true;
+                checkoutButton.innerHTML = '处理中...';
+
+                // 2. 调用你的后端函数来创建支付会话
+                //    你需要创建一个 `/api/create-checkout-session` 的后端接口
+                const response = await fetch('/api/create-checkout-session', {
+                    method: 'POST',
+                });
+
+                const session = await response.json();
+
+                // 3. 使用返回的 session ID 跳转到 Stripe 支付页面
+                const result = await stripe.redirectToCheckout({
+                    sessionId: session.id,
+                });
+
+                if (result.error) {
+                    // 如果跳转失败, 显示错误信息
+                    alert(result.error.message);
+                    checkoutButton.disabled = false;
+                    checkoutButton.innerHTML = translations[currentLang].buyButton;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                checkoutButton.disabled = false;
+                checkoutButton.innerHTML = translations[currentLang].buyButton;
+            }
+        });
+
+
+    </script>
+</body>
+</html>
+
